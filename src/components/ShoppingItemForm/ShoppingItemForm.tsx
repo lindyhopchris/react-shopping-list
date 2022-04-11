@@ -26,7 +26,14 @@ export default function ShoppingItemForm(props: ShoppingItemFormPropsInterface) 
                 <label htmlFor="shoppingItem--name" className="col-sm-2 col-form-label">Add Item:</label>
                 <div className="col-sm-10">
                     <div className="input-group">
-                        <input type="text" className="form-control" id="shoppingItem--name" value={name} onChange={handleNameChange} />
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="shoppingItem--name"
+                            autoComplete='off'
+                            value={name}
+                            onChange={handleNameChange}
+                        />
                         <button type="submit" className="btn btn-success">Add</button>
                     </div>
                 </div>

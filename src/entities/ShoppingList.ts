@@ -32,10 +32,6 @@ export default class ShoppingList implements ShoppingListInterface {
         return new ShoppingList(this.name, items);
     }
 
-    findItemById(id: number): ShoppingItemInterface | null {
-        return this.items.find(item => id === item.id) || null;
-    }
-
     lastIndex(): number {
         let lastItem = this.items[this.items.length - 1];
         return lastItem?.id || 0;
