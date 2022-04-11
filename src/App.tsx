@@ -1,24 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import ShoppingList from './components/ShoppingList';
+import ShoppingItemForm from './components/ShoppingItemForm';
+import ShoppingListStatus from './components/ShoppingListStatus';
+import createShoppingList from './helpers/createShoppingList';
 
 function App() {
+  const [shoppingList, setShoppingList] = useState(createShoppingList());
+
+  const checkOffItem = (id: number): void => {
+    let newShoppingList = shoppingList.checkOffItem(id);
+    setShoppingList(newShoppingList);
+  };
+
+  const addItem = (name: string): void => {
+    let newShoppingList = shoppingList.addItem(name);
+    setShoppingList(newShoppingList);
+  }
+
+  const checkedOffItems = shoppingList.items.filter(item => item.checkedOff);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <h1 className="mt-5">{shoppingList.name}</h1>
+      <hr />
+      <ShoppingItemForm onSubmit={addItem} />
+      <ShoppingList items={shoppingList.items} onCheckOff={checkOffItem} />
+      <div className="mt-1 text-center">
+        <ShoppingListStatus items={shoppingList.items} />
+      </div>
     </div>
   );
 }
