@@ -10,9 +10,9 @@ export default function ShoppingItem(props: ShoppingItemPropsInterface) {
     const { item, onCheckOff } = props;
     
     return (
-        <li className={`list-group-item ${item.checkedOff ? 'text-decoration-line-through text-muted' : ''}`}>
+        <li className="list-group-item">
             <div className="row">
-                <div className="col">
+                <div className={`col ${item.checkedOff ? 'text-decoration-line-through text-muted' : ''}`}>
                     {item.id}. {item.name}
                 </div>
                 <div className="col-3 text-end">
