@@ -8,12 +8,12 @@ import createShoppingList from './helpers/createShoppingList';
 function App() {
   const [shoppingList, setShoppingList] = useState(createShoppingList());
 
-  const checkOffItem = (id: number): void => {
+  const onCheckOffItem = (id: number): void => {
     let newShoppingList = shoppingList.checkOffItem(id);
     setShoppingList(newShoppingList);
   };
 
-  const addItem = (name: string): void => {
+  const onAddItem = (name: string): void => {
     let newShoppingList = shoppingList.addItem(name);
     setShoppingList(newShoppingList);
   }
@@ -22,8 +22,8 @@ function App() {
     <div className="container">
       <h1 className="mt-5">{shoppingList.name}</h1>
       <hr />
-      <ShoppingItemForm onSubmit={addItem} />
-      <ShoppingList items={shoppingList.items} onCheckOff={checkOffItem} />
+      <ShoppingItemForm onSubmit={onAddItem} />
+      <ShoppingList items={shoppingList.items} onCheckOff={onCheckOffItem} />
       <div className="mt-1 text-center">
         <ShoppingListStatus items={shoppingList.items} />
       </div>
