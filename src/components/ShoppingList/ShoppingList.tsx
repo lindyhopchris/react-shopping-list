@@ -8,8 +8,10 @@ interface ShoppingListPropsInterface {
 
 export default function ShoppingList(props: ShoppingListPropsInterface) {
     const { items, onCheckOff } = props;
+    const handleCheckOff = (id: number) => () => onCheckOff(id);
+
     const listItems = items.map(item => 
-        <ShoppingItem item={item} key={item.id} onCheckOff={onCheckOff} />
+        <ShoppingItem item={item} key={item.id} onCheckOff={handleCheckOff(item.id)} />
     );
 
     return (

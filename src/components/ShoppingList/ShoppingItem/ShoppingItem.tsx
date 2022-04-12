@@ -3,14 +3,11 @@ import ShoppingItemInterface from '../../../entities/ShoppingItemInterface';
 
 interface ShoppingItemPropsInterface {
     item: ShoppingItemInterface,
-    onCheckOff: (id: number) => void,
+    onCheckOff: () => void,
 }
 
 export default function ShoppingItem(props: ShoppingItemPropsInterface) {
     const { item, onCheckOff } = props;
-    const onClick = () => {
-        onCheckOff(item.id);    
-    };
     
     return (
         <li className={`list-group-item ${item.checkedOff ? 'text-decoration-line-through text-muted' : ''}`}>
@@ -20,7 +17,7 @@ export default function ShoppingItem(props: ShoppingItemPropsInterface) {
                 </div>
                 <div className="col-3 text-end">
                     {!item.checkedOff &&
-                        <button type="button" className="btn btn-sm btn-warning" onClick={onClick}>
+                        <button type="button" className="btn btn-sm btn-warning" onClick={onCheckOff}>
                             Check Me Off!
                         </button>
                     }

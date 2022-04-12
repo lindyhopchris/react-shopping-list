@@ -18,8 +18,6 @@ function App() {
     setShoppingList(newShoppingList);
   }
 
-  const checkedOffItems = shoppingList.items.filter(item => item.checkedOff);
-
   return (
     <div className="container">
       <h1 className="mt-5">{shoppingList.name}</h1>
