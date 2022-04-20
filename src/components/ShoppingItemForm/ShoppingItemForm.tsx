@@ -10,10 +10,10 @@ export default function ShoppingItemForm(props: ShoppingItemFormPropsInterface) 
     
     const handleSubmit = (e: React.FormEvent): void => {
         e.preventDefault();
-        if (name) {
+        if (name.trim()) {
             onSubmit(name);
-            setName('');
         }
+        setName('');
     };
 
     const handleNameChange = (e: React.FormEvent<HTMLInputElement>): void => {
